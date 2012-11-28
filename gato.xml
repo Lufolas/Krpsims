@@ -1,0 +1,101 @@
+<krp_sims optimize="f">
+	<debut time="50000">
+		<item qty="10">four</item>
+		<item qty="10000">f</item>
+	</debut>
+	<process_list>
+		<process name="pomme" require_time="200">
+			<require qty="100">f</require>
+			<produce qty="700">pomme</produce>
+		</process>
+		<process name="citron" require_time="200">
+			<require qty="100">f</require>
+			<produce qty="400">citron</produce>
+		</process>
+		<process name="oeuf" require_time="200">
+			<require qty="100">f</require>
+			<produce qty="100">oeuf</produce>
+		</process>
+		<process name="farine" require_time="200">
+			 <require qty="100">f</require>
+			 <produce qty="800">farine</produce>
+		</process>
+		<process name="beurre" require_time="200">
+			 <require qty="100">f</require>
+			 <produce qty="2000">beurre</produce>
+		</process>
+		<process name="lait" require_time="200">
+			<require qty="100">f</require>
+			<produce qty="2000">lait</produce>
+		</process>
+		<process name="separation_oeuf" require_time="2">
+			<require qty="1">oeuf</require>
+			<produce qty="1">jaune_oeuf</produce>
+			<produce qty="1">blanc_oeuf</produce>
+		</process>
+		<process name="reunion_oeuf" require_time="0">
+			<require qty="1">jaune_oeuf</require>
+			<require qty="1">blanc_oeuf</require>
+			<produce qty="1">oeuf</produce>
+		</process>
+		<process name="pate_sable" require_time="300">
+			<require qty="5">oeuf</require>
+			<require qty="100">farine</require>
+			<require qty="4">beurre</require>
+			<require qty="5">lait</require>
+			<produce qty="300">pate_sable</produce>
+			<produce qty="3">blanc_oeuf</produce>
+		</process>
+		<process name="pate_feuillete" require_time="800">
+			<require qty="3">oeuf</require>
+			<require qty="200">farine</require>
+			<require qty="10">beurre</require>
+			<require qty="2">lait</require>
+			<produce qty="100">pate_feuillete</produce>
+		</process>
+		<process name="tarte_citron" require_time="60">
+			<require qty="100">pate_feuillete</require>
+			<require qty="50">citron</require>
+			<require qty="5">blanc_oeuf</require>
+			<require qty="1">four</require>
+			<produce qty="5">tarte_citron</produce>
+			<produce qty="1">four</produce>
+		</process>	
+		<process name="tarte_pomme" require_time="50">
+			 <require qty="100">pate_sable</require>
+			 <require qty="30">pomme</require>
+			 <require qty="1">four</require>
+			 <produce qty="8">tarte_pomme</produce>
+			 <produce qty="1">four</produce>
+		</process>
+		<process name="flanc" require_time="300">
+			 <require qty="10">jaune_oeuf</require>
+			 <require qty="4">lait</require>
+			 <require qty="1">four</require>
+			 <produce qty="5">flanc</produce>
+			 <produce qty="1">four</produce>
+		</process>
+		<process name="boite" require_time="1">
+			 <require qty="3">tarte_citron</require>
+			 <require qty="7">tarte_pomme</require>
+			 <require qty="30">f</require>
+			 <produce qty="1">boite</produce>
+		</process>
+		<process name="vente_boite" require_time="30">
+			 <require qty="100">boite</require>
+			 <produce qty="55000">f</produce>
+		</process>
+		<process name="vente_tarte_pomme" require_time="30">
+			 <require qty="10">tarte_pomme</require>
+			 <produce qty="100">f</produce>
+		</process>
+		<process name="vente_tarte_citron" require_time="30">
+			 <require qty="10">tarte_citron</require>
+			 <produce qty="200">f</produce>
+		</process>
+		<process name="vente_flan" require_time="30">
+			 <require qty="10">flanc</require>
+			 <produce qty="300">f</produce>
+		</process>
+	</process_list>
+</krp_sims>

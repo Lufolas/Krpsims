@@ -1,0 +1,185 @@
+<krp_sims optimize="f">
+	<debut time="50000">
+		<item qty="120000">f</item>
+	</debut>
+	<process_list>
+		<process name="cd_funky" require_time="400">
+			<require qty="100">f</require>
+			<produce qty="1">cd_funky</produce>
+		</process>
+		<process name="lecteur_cd" require_time="400">
+			<require qty="800">f</require>
+			<produce qty="1">lecteur_cd</produce>
+		</process>
+		<process name="motivation" require_time="100">
+			<require qty="1">cd_funky</require>
+			<require qty="1">lecteur_cd</require>
+			<produce qty="1">cd_funky</produce>
+			<produce qty="1">lecteur_cd</produce>
+			<produce qty="1000">motivation</produce>
+		</process>
+		<process name="matos" require_time="500">
+			<require qty="30000">f</require>
+			<produce qty="1">matos</produce>
+		</process>
+		<process name="bassiste" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">bassiste</produce>
+		</process>
+		<process name="batteur" require_time="100">
+			<require qty="200">motivation</require>
+			<produce qty="1">batteur</produce>
+		</process>
+		<process name="pianiste_funky" require_time="200">
+			<require qty="100">motivation</require>
+			<produce qty="1">pianiste_funky</produce>
+		</process>
+		<process name="pianiste" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">pianiste</produce>
+		</process>
+		<process name="guitariste" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">guitariste</produce>
+		</process>
+		<process name="percussioniste" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">percussioniste</produce>
+		</process>
+		<process name="trompettiste" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">trompettiste</produce>
+		</process>
+		<process name="saxophoniste_alto" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">saxophoniste_alto</produce>
+		</process>
+		<process name="saxophoniste_tenor" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">saxophoniste_tenor</produce>
+		</process>
+		<process name="tromboniste" require_time="100">
+			<require qty="100">motivation</require>
+			<produce qty="1">tromboniste</produce>
+		</process>
+		<process name="trio_jazz" require_time="500">
+			<require qty="1">batteur</require>
+			<require qty="1">bassiste</require>
+			<require qty="1">pianiste</require>
+			<require qty="1">matos</require>
+			<require qty="200">motivation</require>
+			<produce qty="1">trio_jazz</produce>
+		</process>
+		<process name="big_band" require_time="500">
+			<require qty="1">batteur</require>
+			<require qty="1">bassiste</require>
+			<require qty="1">pianiste</require>
+			<require qty="2">trompettiste</require>
+			<require qty="2">saxophoniste_alto</require>
+			<require qty="2">saxophoniste_tenor</require>
+			<require qty="2">tromboniste</require>
+			<require qty="1">matos</require>
+			<require qty="100">motivation</require>
+			<produce qty="1">big_band</produce>
+		</process>
+		<process name="FUNKY_BAND" require_time="500">
+			<require qty="1">batteur</require>
+			<require qty="1">bassiste</require>
+			<require qty="1">pianiste_funky</require>
+			<require qty="1">trompettiste</require>
+			<require qty="1">saxophoniste_tenor</require>
+			<require qty="1">tromboniste</require>
+			<require qty="1">percussioniste</require>
+			<require qty="1">matos</require>
+			<require qty="150">motivation</require>
+			<produce qty="1">FUNKY_BAND</produce>
+		</process>
+		<process name="ska_band" require_time="500">
+			<require qty="1">batteur</require>
+			<require qty="1">bassiste</require>
+			<require qty="1">pianiste</require>
+			<require qty="1">trompettiste</require>
+			<require qty="1">saxophoniste_alto</require>
+			<require qty="1">tromboniste</require>
+			<require qty="1">percussioniste</require>
+			<require qty="1">matos</require>
+			<require qty="100">motivation</require>
+			<produce qty="1">ska_band</produce>
+		</process>
+		<process name="salle_de_concert" require_time="200">
+			<require qty="15000">f</require>
+			<produce qty="1">salle_de_concert</produce>
+		</process>
+		<process name="concert_trio_jazz" require_time="200">
+			<require qty="1">salle_de_concert</require>
+			<require qty="1">trio_jazz</require>
+			<require qty="300">gens</require>
+			<produce qty="1">matos</produce>
+			<produce qty="18000">f</produce>
+		</process>
+		<process name="concert_big_band" require_time="200">
+			<require qty="1">salle_de_concert</require>
+			<require qty="1">big_band</require>
+			<require qty="300">gens</require>
+			<produce qty="1">matos</produce>
+			<produce qty="15000">f</produce>
+		</process>
+		<process name="concert_FUNK" require_time="200">
+			<require qty="1">salle_de_concert</require>
+			<require qty="1">FUNKY_BAND</require>
+			<require qty="400">gens</require>
+			<produce qty="1">matos</produce>
+			<produce qty="20000">f</produce>
+		</process>
+		<process name="concert_ska" require_time="200">
+			<require qty="1">salle_de_concert</require>
+			<require qty="1">ska_band</require>
+			<require qty="600">gens</require>
+			<require qty="1">beauplan_team</require>
+			<produce qty="1">matos</produce>
+			<produce qty="30000">f</produce>
+		</process>
+		<process name="gens" require_time="200">
+			<require qty="1000">motivation</require>
+			<produce qty="1000">gens</produce>
+		</process>
+		<process name="brice" require_time="200">
+			<require qty="50">motivation</require>
+			<produce qty="1">brice</produce>
+		</process>
+		<process name="canard" require_time="200">
+			<require qty="30">motivation</require>
+			<produce qty="1">canard</produce>
+		</process>
+		<process name="beuz" require_time="200">
+			<require qty="50">motivation</require>
+			<produce qty="1">beuz</produce>
+		</process>
+		<process name="babar" require_time="200">
+			<require qty="70">motivation</require>
+			<produce qty="1">babar</produce>
+		</process>
+		<process name="matoy" require_time="200">
+			<require qty="50">motivation</require>
+			<produce qty="1">matoy</produce>
+		</process>
+		<process name="le_snake" require_time="200">
+			<require qty="50">motivation</require>
+			<produce qty="1">le_snake</produce>
+		</process>
+		<process name="icha" require_time="200">
+			<require qty="50">motivation</require>
+			<produce qty="1">icha</produce>
+		</process>
+		<process name="beauplan_team" require_time="200">
+			<require qty="1">brice</require>
+			<require qty="1">canard</require>
+			<require qty="1">beuz</require>
+			<require qty="1">babar</require>
+			<require qty="1">matoy</require>
+			<require qty="1">le_snake</require>
+			<require qty="1">icha</require>
+			<produce qty="1">beauplan_team</produce>
+		</process>
+	</process_list>
+</krp_sims>
