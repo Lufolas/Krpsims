@@ -18,21 +18,20 @@
 #include <fstream>
 #include <string>
 #include "tinyxml2.h"
+#include "parser.hpp"
 
 class Krpsims
 {
 private:
-	// bool			isXML;
 	std::string		fileName;
-	// std::ifstream	infile;
-	tinyxml2::XMLDocument doc;
+	Parser 			parser;
 
 public:
   Krpsims(std::string inputFile);
   ~Krpsims();
 
-  tinyxml2::XMLError	isValidFile();
-  void					start();
+  bool	isValidFile();
+  void	start();
 
 };
 

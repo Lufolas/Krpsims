@@ -18,12 +18,16 @@ class Parser
 {
 private:
   std::string	optimize;
+  tinyxml2::XMLDocument doc;
+  std::map<tinyxml2::XMLElement, std::string>;
 
 public:
   Parser();
   ~Parser();
-  void setOptimize(std::string);
+  bool	LoadDoc(std::string);
+  void	setOptimize(std::string);
   std::string getOptimize(void);
+  void	parseAll(void);
 };
 
 #endif /* __PARSER_HPP__ */

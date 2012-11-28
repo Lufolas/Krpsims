@@ -9,8 +9,6 @@
 
 Krpsims::Krpsims(std::string inputFile) : fileName(inputFile)
 {
-	// this->isXML = (inputFile.substr(inputFile.find_last_of('.')) == ".xml");
-	// this->infile.open(inputFile.c_str(), std::ifstream::in);
 }
 
 Krpsims::~Krpsims()
