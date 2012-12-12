@@ -23,7 +23,6 @@
 class Krpsims
 {
 private:
-	std::string		fileName;
 	Parser 			parser;
 
 public:

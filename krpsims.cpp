@@ -7,26 +7,35 @@
 
 #include "krpsims.hpp"
 
-Krpsims::Krpsims(std::string inputFile) : fileName(inputFile)
+Krpsims::Krpsims(std::string inputFile)
 {
+	this->parser.setInputFile(inputFile);
 }
 
 Krpsims::~Krpsims()
 {
-	// this->infile.close();
 }
 
-tinyxml2::XMLError	Krpsims::isValidFile()
+bool	Krpsims::isValidFile()
 {
-	return this->doc.LoadFile(this->fileName.c_str());
+	return this->parser.LoadDoc();
 }
 
 void	Krpsims::start()
 {
-	tinyxml2::XMLElement *b_krpSims = doc.FirstChildElement("krp_sims");
+	this->parser.searchAllData();
 
-	std::cout << b_krpSims->Attribute("optimize") << std::endl;
+	std::cout << "OPTIMIZE : " << this->parser.getOptimize() << std::endl;
 	
+	std::cout << "ITEM : " << std::endl;
+	std::map<std::string, int> map_item = this->parser.getMapItem();
+	std::map<std::string, int>::iterator it;
+
+	for ( it = map_item.begin() ; it != map_item.end(); it++ )
+    	std::cout << "\t" << (*it).first << " => " << (*it).second << std::endl;
+
+    std::cout << "TIME : " << this->parser.getTime() << std::endl;
+
 }
 
 

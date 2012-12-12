@@ -14,20 +14,40 @@
 ** description	
 **
 */
+#include <map>
+#include <string>
+#include <iostream>
+#include "tinyxml2.h"
+
 class Parser
 {
 private:
-  std::string	optimize;
+  std::string	input_file_name;
   tinyxml2::XMLDocument doc;
-  std::map<tinyxml2::XMLElement, std::string>;
+
+  tinyxml2::XMLElement *b_krp_sims;
+  tinyxml2::XMLElement *b_debut;
+
+  std::string					optimize;
+  std::map<std::string, int> 	map_item;
+  int 							time;
+
+protected:
+  bool	parseOptimize(void);
+  bool	parseItem(void);
+  bool	parseTime(void);
+
 
 public:
   Parser();
   ~Parser();
-  bool	LoadDoc(std::string);
-  void	setOptimize(std::string);
-  std::string getOptimize(void);
-  void	parseAll(void);
+  void	setInputFile(std::string);
+  bool	LoadDoc(void);
+
+  std::string					getOptimize(void);
+  std::map<std::string, int>	getMapItem(void);
+  int 							getTime(void);
+  void	searchAllData();
 };
 
 #endif /* __PARSER_HPP__ */

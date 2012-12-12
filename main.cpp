@@ -17,7 +17,7 @@ int	main(int ac, char **av){
 	{
 		Krpsims krpCore(av[1]);
 
-		if (krpCore.isValidFile() == tinyxml2::XML_NO_ERROR)
+		if (krpCore.isValidFile())
 		{
 			krpCore.start();
 			std::cout << "Traitement OK" << std::endl;
