@@ -18,10 +18,7 @@ int	main(int ac, char **av){
 		Krpsims krpCore(av[1]);
 
 		if (krpCore.isValidFile())
-		{
 			krpCore.start();
-			std::cout << "Traitement OK" << std::endl;
-		}
 		else
 		{
 			std::cerr << "Invalid or corrupted file." << std::endl;

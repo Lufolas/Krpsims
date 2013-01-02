@@ -23,18 +23,45 @@ bool	Krpsims::isValidFile()
 
 void	Krpsims::start()
 {
-	this->parser.searchAllData();
+	if (!this->parser.searchAllData())
+		return;
 
-	std::cout << "OPTIMIZE : " << this->parser.getOptimize() << std::endl;
+	/*
+	## AFFICHAGE DE TEST ##
+	*/
+	// std::cout << "OPTIMIZE : " << this->parser.getOptimize() << "\n" << std::endl;
 	
-	std::cout << "ITEM : " << std::endl;
-	std::map<std::string, int> map_item = this->parser.getMapItem();
-	std::map<std::string, int>::iterator it;
+	// std::cout << "ITEM : " << std::endl;
+	// std::map<std::string, int> map_item = this->parser.getMapItem();
+	// std::map<std::string, int>::iterator it_map_item;
 
-	for ( it = map_item.begin() ; it != map_item.end(); it++ )
-    	std::cout << "\t" << (*it).first << " => " << (*it).second << std::endl;
+	// for ( it_map_item = map_item.begin() ; it_map_item != map_item.end(); it_map_item++ )
+ //    	std::cout << "\t" << (*it_map_item).first << " => " << (*it_map_item).second << std::endl;
 
-    std::cout << "TIME : " << this->parser.getTime() << std::endl;
+ //    std::cout << "\nTIME : " << this->parser.getTime() << "\n" << std::endl;
+
+	// std::cout << "PROCESS_LIST : " << std::endl;
+ //    std::vector<Process *>	vector_process = this->parser.getVectorProcess();
+ //    std::vector<Process *>::iterator it_vector_process = vector_process.begin();
+
+ //    for (; it_vector_process != vector_process.end(); it_vector_process++)
+ //    {
+ //    	std::cout << "\t" << (*it_vector_process)->getName() <<  " => " << (*it_vector_process)->getRequireTime() << std::endl;
+			
+	// 	std::cout << "\t\tREQUIRE_LIST : " << std::endl;
+	// 	std::map<std::string, int> map_require = (*it_vector_process)->getMapRequire();
+	// 	std::map<std::string, int>::iterator it_map_require = map_require.begin();
+	// 	for (; it_map_require != map_require.end(); it_map_require++)
+ //    		std::cout << "\t\t\t" << (*it_map_require).first << " => " << (*it_map_require).second << std::endl;
+	// 	std::cout << std::endl;
+
+	// 	std::cout << "\t\tPRODUCE_LIST : " << std::endl;
+	// 	std::map<std::string, int> map_produce = (*it_vector_process)->getMapProduce();
+	// 	std::map<std::string, int>::iterator it_map_produce = map_produce.begin();
+	// 	for (; it_map_produce != map_produce.end(); it_map_produce++)
+ //    		std::cout << "\t\t\t" << (*it_map_produce).first << " => " << (*it_map_produce).second << std::endl;
+	// 	std::cout << "---------------------------------------------" << std::endl;
+ //    }
 
 }
 

@@ -15,39 +15,54 @@
 **
 */
 #include <map>
+#include <vector>
 #include <string>
 #include <iostream>
+#include "process.hpp"
+#include "syntaxException.hpp"
 #include "tinyxml2.h"
 
 class Parser
 {
 private:
-  std::string	input_file_name;
-  tinyxml2::XMLDocument doc;
+  std::string	                  input_file_name;
+  tinyxml2::XMLDocument         doc;
 
-  tinyxml2::XMLElement *b_krp_sims;
-  tinyxml2::XMLElement *b_debut;
+  tinyxml2::XMLElement          *b_krp_sims;
+  tinyxml2::XMLElement          *b_debut;
+  tinyxml2::XMLElement          *b_process_list;
 
-  std::string					optimize;
-  std::map<std::string, int> 	map_item;
-  int 							time;
+  std::string					          optimize;
+  std::map<std::string, int> 	  map_item;
+  int 							            time;
+  std::vector<Process *>        vector_process;
 
 protected:
-  bool	parseOptimize(void);
-  bool	parseItem(void);
-  bool	parseTime(void);
+  void	parseOptimize(void);
+  void	parseItem(void);
+  void	parseTime(void);
+  void  parseProcess(void);
+  std::map<std::string, int>  parseRequire(tinyxml2::XMLElement *);
+  std::map<std::string, int>  parseProduce(tinyxml2::XMLElement *);
+  bool  verifTag(void);
+  bool  verifNodes(tinyxml2::XMLElement *b_elem);
+  bool  verifNodeDebut(tinyxml2::XMLElement *b_child_elem);
+  bool  verifNodeProcessList(tinyxml2::XMLElement *b_child_elem);
+
+
 
 
 public:
   Parser();
   ~Parser();
-  void	setInputFile(std::string);
-  bool	LoadDoc(void);
+  void	                       setInputFile(std::string);
+  bool	                       LoadDoc(void);
 
-  std::string					getOptimize(void);
-  std::map<std::string, int>	getMapItem(void);
-  int 							getTime(void);
-  void	searchAllData();
+  std::string                  getOptimize(void);
+  std::map<std::string, int>	 getMapItem(void);
+  int 							           getTime(void);
+  std::vector<Process *>       getVectorProcess(void);
+  bool	                       searchAllData(void);
 };
 
 #endif /* __PARSER_HPP__ */
