@@ -37,6 +37,7 @@ private:
   int 							            time;
   std::vector<Process *>        vector_process;
 
+
   void	parseOptimize(void);
   void	parseItem(void);
   void	parseTime(void);
@@ -59,6 +60,8 @@ public:
   int 							getTime(void);
   std::vector<Process *>		getVectorProcess(void);
   bool							searchAllData(void);
+  std::vector<Process *>		findProcessWhoProduce(std::string);
+  std::vector<Process *>		findProcessWhoRequire(std::string);
 };
 
 #endif /* __PARSER_HPP__ */

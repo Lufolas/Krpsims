@@ -25,7 +25,7 @@ void	Krpsims::start()
 {
 	if (!this->parser.searchAllData())
 		return;
-
+	
 	/*
 	## AFFICHAGE DE TEST ##
 	*/

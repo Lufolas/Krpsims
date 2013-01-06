@@ -38,7 +38,6 @@ public:
   void        setRequireTime(int);
   void        setMapRequire(std::map<std::string, int>);
   void        setMapProduce(std::map<std::string, int>);
-
 };
 
 #endif /* __PROCESS_HPP__ */
