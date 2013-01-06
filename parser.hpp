@@ -63,6 +63,8 @@ public:
   int 							           getTime(void);
   std::vector<Process *>       getVectorProcess(void);
   bool	                       searchAllData(void);
+  std::vector<Process *>       findProcessWhoProduce(std::string);
+  std::vector<Process *>       findProcessWhoRequire(std::string);
 };
 
 #endif /* __PARSER_HPP__ */

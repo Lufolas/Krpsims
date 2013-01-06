@@ -276,3 +276,41 @@ std::vector<Process *>	Parser::getVectorProcess(void)
 {
 	return this->vector_process;
 }
+
+std::vector<Process *> Parser::findProcessWhoProduce(std::string name)
+{
+	std::vector<Process *>	vector_process_res;
+	std::vector<Process *>	vector_process = this->getVectorProcess();
+    std::vector<Process *>::iterator it_vector_process = vector_process.begin();
+
+    for (; it_vector_process != vector_process.end(); it_vector_process++)
+    {
+    	std::map<std::string, int> map_produce = (*it_vector_process)->getMapProduce();
+		std::map<std::string, int>::iterator it_map_produce = map_produce.begin();
+		for (; it_map_produce != map_produce.end(); it_map_produce++)
+		{
+			if ((*it_map_produce).first == name)
+				vector_process_res.push_back(*it_vector_process);
+		}
+    }
+    return vector_process_res;
+}
+
+std::vector<Process *> Parser::findProcessWhoRequire(std::string name)
+{
+	std::vector<Process *>	vector_process_res;
+	std::vector<Process *>	vector_process = this->getVectorProcess();
+    std::vector<Process *>::iterator it_vector_process = vector_process.begin();
+
+    for (; it_vector_process != vector_process.end(); it_vector_process++)
+    {
+    	std::map<std::string, int> map_require = (*it_vector_process)->getMapRequire();
+		std::map<std::string, int>::iterator it_map_require = map_require.begin();
+		for (; it_map_require != map_require.end(); it_map_require++)
+		{
+			if ((*it_map_require).first == name)
+				vector_process_res.push_back(*it_vector_process);
+		}
+    }
+    return vector_process_res;
+}
