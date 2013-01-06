@@ -13,9 +13,10 @@ int	main(int ac, char **av){
 		std::cerr << "Not enough params" << std::endl;
 		return -1;
 	}
-	else if (ac == 2)
+	else
 	{
-		Krpsims krpCore(av[1]);
+		//Krpsims krpCore(av[1]);
+		Krpsims krpCore("C:\\Users\\Hydrounnet\\Documents\\Visual Studio 2012\\Projects\\Krpsims\\gato.xml");
 
 		if (krpCore.isValidFile())
 			krpCore.start();

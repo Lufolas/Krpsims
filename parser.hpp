@@ -37,7 +37,6 @@ private:
   int 							            time;
   std::vector<Process *>        vector_process;
 
-protected:
   void	parseOptimize(void);
   void	parseItem(void);
   void	parseTime(void);
@@ -49,20 +48,17 @@ protected:
   bool  verifNodeDebut(tinyxml2::XMLElement *b_child_elem);
   bool  verifNodeProcessList(tinyxml2::XMLElement *b_child_elem);
 
-
-
-
 public:
   Parser();
   ~Parser();
-  void	                       setInputFile(std::string);
-  bool	                       LoadDoc(void);
+  void							setInputFile(std::string);
+  bool							LoadDoc(void);
 
-  std::string                  getOptimize(void);
-  std::map<std::string, int>	 getMapItem(void);
-  int 							           getTime(void);
-  std::vector<Process *>       getVectorProcess(void);
-  bool	                       searchAllData(void);
+  std::string					getOptimize(void);
+  std::map<std::string, int>	getMapItem(void);
+  int 							getTime(void);
+  std::vector<Process *>		getVectorProcess(void);
+  bool							searchAllData(void);
 };
 
 #endif /* __PARSER_HPP__ */
