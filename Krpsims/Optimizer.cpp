@@ -2,13 +2,13 @@
 #include <utility>
 #include "optimizer.hpp"
 
-Optimizer::Optimizer(Parser& p)
+Optimizer::Optimizer(Parser *p)
 {
 	parseur_ = p;
-	optimize_ = p.getOptimize();
-	items_ = p.getMapItem();
-	time_ = p.getTime();
-	vector_ = p.getVectorProcess();
+	optimize_ = p->getOptimize();
+	items_ = p->getMapItem();
+	time_ = p->getTime();
+	vector_ = p->getVectorProcess();
 }
 
 Optimizer::~Optimizer()
@@ -23,53 +23,47 @@ bool	Optimizer::isValidPath(Process *best)
 	bool						ret = false;
 
 	for (std::map<std::string, int>::iterator it = require.begin(); it != require.end(); ++it)
-		if (isRawMaterial(it) || !(canProduce = isProducedBy(it->first)).empty())
+		if (!(canProduce = isProducedBy(it->first)).empty())
 			for (std::vector<Process *>::iterator it2 = canProduce.begin(); it2 != canProduce.end(); ++it2)
 				if (isValidPath(*it2))
 					ret = true;
 	return ret;
 }
 
-void	Optimizer::getChainProcess(Process *best)
+void	Optimizer::getChainProcess(std::map<std::string, int>& list)
 {
-	std::list<Process *> pList;
-
-	pList.push_back(best);
-	for (std::map<std::string, int>::iterator it = best->getMapRequire().begin();
-		it != best->getMapRequire().end();
+	for (std::map<std::string, int>::iterator it = list.begin();
+		it != list.end();
 		++it)
 	{
-		while (!isProducedBy(pList.back()->getName()).empty())
-		{
-			pList.push_back(isProducedBy(pList.back()->getName())[0]);
-		}
 	}
+}
 
-	std::map<Process *, int>	pMap;
-	std::string					var = optimize_;
-	while (!pList.empty())
+
+bool	Optimizer::opti(std::string optim)
+{
+	
+	std::vector<Process *>	prod = parseur_->findProcessWhoProduce(optim);
+	
+	for (unsigned int i = 0; i < prod.max_size(); ++i)
 	{
-		do
+		std::map<std::string, int> list = prod[i]->getMapRequire();
+		for (std::map<std::string, int>::iterator j = list.begin();
+			j != list.end();
+			++j)
 		{
-		pMap.insert(std::make_pair(pList.front(), pList.front()->getMapProduce()[var]));
-		var = pList.front()->getMapRequire()[i];
+			if (items_.find((*j).first) != items_.end())
+				continue ;
+			if (!opti((*j).first))
+				break ;
+			else
+				return true;
 		}
-		pList.pop_front();
 	}
+	return false;
 }
 
 void	Optimizer::start()
 {
-	Process *best = 0;
-
-	for (std::vector<Process *>::iterator it = vector_.begin(); it != vector_.end(); ++it)
-	{
-		if (isValidPath(*it) && (!best || (*it)->getMapProduce()[optimize_] > best->getMapProduce()[optimize_]))
-		{
-			best = (*it);
-		}
-	}
-	if (!best)
-		return ;
-	getChainProcess(best);
+	std::cout << opti(optimize_) << std::endl;
 }
