@@ -314,3 +314,14 @@ std::vector<Process *> Parser::findProcessWhoRequire(std::string name)
     }
     return vector_process_res;
 }
+
+int 	Parser::findProcessTime(std::string name)
+{
+	std::vector<Process *>	vector_process = this->getVectorProcess();
+    std::vector<Process *>::iterator it_vector_process = vector_process.begin();
+
+    for (; it_vector_process != vector_process.end(); it_vector_process++)
+		if ((*it_vector_process)->getName() == name)
+			return ((*it_vector_process)->getRequireTime());
+    return -1;
+}
