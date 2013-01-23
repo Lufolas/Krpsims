@@ -84,18 +84,24 @@ bool	Optimizer::opti(std::string optim, std::list<std::string>& past, bool warni
 
 void	Optimizer::start()
 {
+	int		max;
 	std::list<std::string>	past;
 	opti(optimize_, past, false);
+	max = items_[optimize_];
 	for (std::list<std::string>::iterator it = past.begin(); it != past.end(); ++it)
 	{
 		if (*it != optimize_)
 		{
 			affProcess(1, *it);
 			affWait(parseur_->findProcessTime(*it));
+			if (parseur_->findProduceQuantity(*it, optimize_) != -1)
+				max += parseur_->findProduceQuantity(*it, optimize_);
+			if (parseur_->findProduceQuantity(*it, optimize_) != -1)
+				max -= parseur_->findRequireQuantity(*it, optimize_);
 		}
 	}
 	//affWait(time_);
-	affEnd(items_[optimize_]);
+	affEnd(max);
 }
 
 void	Optimizer::affProcess(int num, std::string name)

@@ -8,15 +8,14 @@
 #include "krpsims.hpp"
 
 int	main(int ac, char **av){
-	if (ac == 10)
+	if (ac == 1)
 	{
 		std::cerr << "Not enough params" << std::endl;
 		return -1;
 	}
 	else
 	{
-		//Krpsims krpCore(av[1]);
-		Krpsims krpCore("C:\\Users\\Hydrounnet\\Documents\\Visual Studio 2012\\Projects\\Krpsims\\gato.xml");
+		Krpsims krpCore(av[1]);
 
 		if (krpCore.isValidFile())
 			krpCore.start();
