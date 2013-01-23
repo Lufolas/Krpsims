@@ -62,6 +62,13 @@ bool	Optimizer::opti(std::string optim, std::list<std::string>& past, bool warni
 			{
 				continue ;
 			}
+			for (std::list<std::string>::iterator it = past.begin();
+				it != past.end();
+				++it)
+			{
+				if ((*it) == (*j).first)
+					return true;
+			}
 			if (!opti((*j).first, past, true))
 				a = false;
 			else
