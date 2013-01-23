@@ -88,10 +88,13 @@ void	Optimizer::start()
 	opti(optimize_, past, false);
 	for (std::list<std::string>::iterator it = past.begin(); it != past.end(); ++it)
 	{
-		affProcess(1, *it);
-		affWait(parseur_->findProcessWhoProduce(*it));
+		if (*it != optimize_)
+		{
+			affProcess(1, *it);
+			affWait(parseur_->findProcessTime(*it));
+		}
 	}
-	affWait(time_);
+	//affWait(time_);
 	affEnd(items_[optimize_]);
 }
 
