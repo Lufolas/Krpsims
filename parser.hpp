@@ -63,6 +63,8 @@ public:
   std::vector<Process *>		findProcessWhoProduce(std::string);
   std::vector<Process *>		findProcessWhoRequire(std::string);
   int                       findProcessTime(std::string);
+  int                       findRequireQuantity(std::string, std::string);
+  int                       findProduceQuantity(std::string, std::string);
 };
 
 #endif /* __PARSER_HPP__ */
