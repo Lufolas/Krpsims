@@ -26,4 +26,6 @@ public:
 	~Optimizer();
 	void	start();
 	void	affProcess(int, std::string);
+	void	affWait(int);
+	void	affEnd(int);
 };
