@@ -6,6 +6,7 @@
 */
 
 #include "krpsims.hpp"
+#include "optimizer.hpp"
 
 Krpsims::Krpsims(std::string inputFile)
 {
@@ -26,10 +27,14 @@ void	Krpsims::start()
 	if (!this->parser.searchAllData())
 		return;
 	
+	Optimizer	op(&this->parser);
+
+	op.start();
 	/*
 	## AFFICHAGE DE TEST ##
 	*/
-	 std::cout << "OPTIMIZE : " << this->parser.getOptimize() << "\n" << std::endl;
+	/*
+	std::cout << "OPTIMIZE : " << this->parser.getOptimize() << "\n" << std::endl;
 	
 	 std::cout << "ITEM : " << std::endl;
 	 std::map<std::string, int> map_item = this->parser.getMapItem();
@@ -62,7 +67,7 @@ void	Krpsims::start()
      		std::cout << "\t\t\t" << (*it_map_produce).first << " => " << (*it_map_produce).second << std::endl;
 	 	std::cout << "---------------------------------------------" << std::endl;
      }
-
+	 */
 
 
 	

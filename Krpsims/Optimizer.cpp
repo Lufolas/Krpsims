@@ -23,7 +23,7 @@ bool	Optimizer::isValidPath(Process *best)
 	bool						ret = false;
 
 	for (std::map<std::string, int>::iterator it = require.begin(); it != require.end(); ++it)
-		if (!(canProduce = isProducedBy(it->first)).empty())
+		if (!(canProduce = parseur_->findProcessWhoProduce(it->first)).empty())
 			for (std::vector<Process *>::iterator it2 = canProduce.begin(); it2 != canProduce.end(); ++it2)
 				if (isValidPath(*it2))
 					ret = true;
@@ -40,9 +40,15 @@ void	Optimizer::getChainProcess(std::map<std::string, int>& list)
 }
 
 
-bool	Optimizer::opti(std::string optim)
+bool	Optimizer::opti(std::string optim, std::list<std::string>& past)
 {
-	
+	for (std::list<std::string>::iterator it = past.begin(); it != past.end(); ++it)
+	{
+		if ((*it) == optim)
+			return true;
+	}
+
+	past.push_front(optim);
 	std::vector<Process *>	prod = parseur_->findProcessWhoProduce(optim);
 	
 	for (unsigned int i = 0; i < prod.max_size(); ++i)
@@ -53,11 +59,11 @@ bool	Optimizer::opti(std::string optim)
 			++j)
 		{
 			if (items_.find((*j).first) != items_.end())
+			{
 				continue ;
-			if (!opti((*j).first))
-				break ;
-			else
-				return true;
+			}
+			if (!opti((*j).first, past))
+				return false;
 		}
 	}
 	return false;
@@ -65,5 +71,9 @@ bool	Optimizer::opti(std::string optim)
 
 void	Optimizer::start()
 {
-	std::cout << opti(optimize_) << std::endl;
+	std::list<std::string>	past;
+	std::cout << opti(optimize_, past) << std::endl;
+	for (std::list<std::string>::iterator it = past.begin(); it != past.end(); ++it)
+		std::cout << (*it) << std::endl;
+
 }

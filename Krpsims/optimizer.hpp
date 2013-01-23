@@ -18,7 +18,7 @@ class Optimizer
 	std::vector<Process *>		isProducedBy(std::string);
 	void						getChainProcess(std::map<std::string, int>&);
 	bool						production(std::string);
-	bool						opti(std::string);
+	bool						opti(std::string, std::list<std::string>&);
 
 public:
 	Optimizer(Parser*);
