@@ -25,5 +25,7 @@ public:
 	Optimizer(Parser*);
 	~Optimizer();
 	void	start();
-	void	affProcess(int, std::string);
+	void	affEnd(int);
+	void	affWait(int num);
+	void	affProcess(int num, std::string);
 };

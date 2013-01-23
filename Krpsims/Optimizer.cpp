@@ -47,7 +47,9 @@ bool	Optimizer::opti(std::string optim, std::list<std::string>& past, bool warni
 		if ((*it) == optim)
 			return true;
 	}
+
 	bool a = true;
+	
 	past.push_front(optim);
 	std::vector<Process *>	prod = parseur_->findProcessWhoProduce(optim);
 	
@@ -83,10 +85,14 @@ bool	Optimizer::opti(std::string optim, std::list<std::string>& past, bool warni
 void	Optimizer::start()
 {
 	std::list<std::string>	past;
-	std::cout << opti(optimize_, past, false) << std::endl;
+	opti(optimize_, past, false);
 	for (std::list<std::string>::iterator it = past.begin(); it != past.end(); ++it)
-		std::cout << (*it) << std::endl;
-
+	{
+		affProcess(1, *it);
+		affWait(parseur_->findProcessWhoProduce(*it));
+	}
+	affWait(time_);
+	affEnd(items_[optimize_]);
 }
 
 void	Optimizer::affProcess(int num, std::string name)
