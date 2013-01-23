@@ -40,18 +40,18 @@ void	Optimizer::getChainProcess(std::map<std::string, int>& list)
 }
 
 
-bool	Optimizer::opti(std::string optim, std::list<std::string>& past)
+bool	Optimizer::opti(std::string optim, std::list<std::string>& past, bool warning)
 {
 	for (std::list<std::string>::iterator it = past.begin(); it != past.end(); ++it)
 	{
 		if ((*it) == optim)
 			return true;
 	}
-
+	bool a = true;
 	past.push_front(optim);
 	std::vector<Process *>	prod = parseur_->findProcessWhoProduce(optim);
 	
-	for (unsigned int i = 0; i < prod.max_size(); ++i)
+	for (unsigned int i = 0; i < prod.size(); ++i)
 	{
 		std::map<std::string, int> list = prod[i]->getMapRequire();
 		for (std::map<std::string, int>::iterator j = list.begin();
@@ -62,17 +62,21 @@ bool	Optimizer::opti(std::string optim, std::list<std::string>& past)
 			{
 				continue ;
 			}
-			if (!opti((*j).first, past))
-				return false;
+			if (!opti((*j).first, past, true))
+				a = false;
+			else
+				a = true;
 		}
+		if (warning == false)
+			return a;
 	}
-	return false;
+	return a;
 }
 
 void	Optimizer::start()
 {
 	std::list<std::string>	past;
-	std::cout << opti(optimize_, past) << std::endl;
+	std::cout << opti(optimize_, past, false) << std::endl;
 	for (std::list<std::string>::iterator it = past.begin(); it != past.end(); ++it)
 		std::cout << (*it) << std::endl;
 
