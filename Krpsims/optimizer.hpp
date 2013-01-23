@@ -1,3 +1,4 @@
+#pragma once
 
 #include <map>
 #include <list>
@@ -24,4 +25,5 @@ public:
 	Optimizer(Parser*);
 	~Optimizer();
 	void	start();
+	void	affProcess(int, std::string);
 };
