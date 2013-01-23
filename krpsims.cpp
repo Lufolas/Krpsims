@@ -6,7 +6,6 @@
 */
 
 #include "krpsims.hpp"
-#include "optimizer.hpp"
 
 Krpsims::Krpsims(std::string inputFile)
 {

@@ -5,11 +5,11 @@
 ## Wed Nov 28 2012
 NAME	=	krp_sims
 
-SRCXX	=	$(wildcard ./*.cpp)
+SRCXX	=	$(wildcard ./*.cpp ./Krpsims/*.cpp)
 
 OBJXX	=	$(SRCXX:.cpp=.o)
 
-CXXFLAGS=	-Wall -Wextra -O3 -I./include
+CXXFLAGS=	-Wall -Wextra -O3 -I./ -I./Krpsims
 
 CXX	=	g++
 

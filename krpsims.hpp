@@ -19,6 +19,8 @@
 #include <string>
 #include "tinyxml2.h"
 #include "parser.hpp"
+#include "optimizer.hpp"
+
 
 class Krpsims
 {

@@ -7,9 +7,9 @@
 
 #include "syntaxException.hpp"
 
-SyntaxException::SyntaxException(std::string msg)
+SyntaxException::SyntaxException(std::string)
 {
-        this->msg = "SyntaxException: " + msg;
+        this->msg = "Invalid or corrupted file.";
 }
 
 SyntaxException::~SyntaxException() throw()

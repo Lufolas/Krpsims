@@ -88,3 +88,18 @@ void	Optimizer::start()
 		std::cout << (*it) << std::endl;
 
 }
+
+void	Optimizer::affProcess(int num, std::string name)
+{
+	std::cout << num << " Process " << name << std::endl;
+}
+
+void	Optimizer::affWait(int num)
+{
+	std::cout << "wait " << num << std::endl;
+}
+
+void	Optimizer::affEnd(int result)
+{
+	std::cout << "End f = " << result << std::endl;
+}
